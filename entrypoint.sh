@@ -6,8 +6,4 @@ if [[ "$1" != "prosody" ]]; then
     exit 0;
 fi
 
-if [ "$LOCAL" -a  "$PASSWORD" -a "$DOMAIN" ] ; then
-    prosodyctl register $LOCAL $DOMAIN $PASSWORD
-fi
-
 exec "$@"
