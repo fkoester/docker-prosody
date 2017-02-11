@@ -69,6 +69,7 @@ RUN curl -o prosody.tar.gz https://prosody.im/downloads/source/prosody-${PROSODY
 VOLUME /var/lib/prosody
 
 COPY ./entrypoint.sh /entrypoint.sh
+COPY create_dhparam.sh /usr/local/bin/create_dhparam.sh
 RUN chmod 755 /entrypoint.sh
 
 USER prosody
