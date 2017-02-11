@@ -1,6 +1,6 @@
 #! /bin/bash
 
-MODULES_DIRECTORY=/usr/lib/prosody/modules
+MODULES_DIRECTORY=/usr/local/lib/prosody/modules
 
 if [ ! -d "${MODULES_DIRECTORY}/.hg" ]; then
   cd /tmp
