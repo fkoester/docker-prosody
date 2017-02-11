@@ -60,13 +60,13 @@ RUN curl -o prosody.tar.gz https://prosody.im/downloads/source/prosody-${PROSODY
   && mkdir -p /usr/src/prosody \
   && tar -x --strip-components=1 -C /usr/src/prosody -f prosody.tar.gz \
   && cd  /usr/src/prosody \
-  && ./configure --ostype=debian --sysconfdir="/etc/prosody" --datadir="/var/prosody" \
+  && ./configure --ostype=debian --sysconfdir="/etc/prosody" --datadir="/var/lib/prosody" \
   && make \
   && make install \
   && cd / \
   && rm -rf /usr/src/prosody
 
-VOLUME /var/prosody
+VOLUME /var/lib/prosody
 
 COPY ./entrypoint.sh /entrypoint.sh
 RUN chmod 755 /entrypoint.sh
