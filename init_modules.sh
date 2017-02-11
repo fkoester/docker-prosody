@@ -2,7 +2,7 @@
 
 MODULES_DIRECTORY=/usr/lib/prosody/modules
 
-if [ !-d "${MODULES_DIRECTORY}/.hg" ]; then
+if [ ! -d "${MODULES_DIRECTORY}/.hg" ]; then
   cd /tmp
   hg clone https://hg.prosody.im/prosody-modules/ prosody-modules
   shopt -s dotglob # for considering dot files (turn on dot files)
