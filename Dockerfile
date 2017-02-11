@@ -39,6 +39,7 @@ RUN apt-get update \
         lua-zlib-dev \
         lua5.1 \
         lua5.1-0-dev \
+        mercurial \
         openssl \
         ca-certificates \
     && rm -rf /var/lib/apt/lists/*
@@ -60,7 +61,7 @@ RUN curl -o prosody.tar.gz https://prosody.im/downloads/source/prosody-${PROSODY
   && mkdir -p /usr/src/prosody \
   && tar -x --strip-components=1 -C /usr/src/prosody -f prosody.tar.gz \
   && cd  /usr/src/prosody \
-  && ./configure --ostype=debian --sysconfdir="/etc/prosody" --datadir="/var/lib/prosody" \
+  && ./configure --ostype=debian --prefix="/usr" --sysconfdir="/etc/prosody" --datadir="/var/lib/prosody" \
   && make \
   && make install \
   && cd / \
@@ -69,7 +70,9 @@ RUN curl -o prosody.tar.gz https://prosody.im/downloads/source/prosody-${PROSODY
 VOLUME /var/lib/prosody
 
 COPY ./entrypoint.sh /entrypoint.sh
-COPY create_dhparam.sh /usr/local/bin/create_dhparam.sh
+COPY create_dhparam.sh /create_dhparam.sh
+COPY init_modules.sh /init_modules.sh
+COPY update_modules.sh /update_modules.sh
 RUN chmod 755 /entrypoint.sh
 
 USER prosody
