@@ -54,7 +54,7 @@ RUN mkdir -p /var/log/prosody \
   && chown -R prosody:prosody /var/log/prosody
 
 # Install and configure prosody
-ARG PROSODY_VERSION=0.9.12
+ARG PROSODY_VERSION=0.10.0
 RUN curl -o prosody.tar.gz https://prosody.im/downloads/source/prosody-${PROSODY_VERSION}.tar.gz \
   && curl -o signature.asc https://prosody.im/downloads/source/prosody-${PROSODY_VERSION}.tar.gz.asc \
   && gpg --verify signature.asc prosody.tar.gz \
