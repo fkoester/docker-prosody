@@ -48,10 +48,10 @@ COPY pgp_keys.asc .
 
 RUN gpg --import pgp_keys.asc
 
-RUN mkdir -p /var/log/prosody \
+RUN mkdir -p /var/log/prosody /var/run/prosody \
   && touch /var/log/prosody/prosody.log \
   && touch /var/log/prosody/prosody.err \
-  && chown -R prosody:prosody /var/log/prosody
+  && chown -R prosody:prosody /var/log/prosody /var/run/prosody
 
 # Install and configure prosody
 ARG PROSODY_VERSION=0.10.0
